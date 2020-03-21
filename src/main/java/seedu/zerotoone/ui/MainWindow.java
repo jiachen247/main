@@ -5,10 +5,13 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import seedu.zerotoone.commons.core.GuiSettings;
 import seedu.zerotoone.commons.core.LogsCenter;
@@ -31,9 +34,12 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private ExerciseListPanel exerciseListPanel;
+//    private ExerciseListPanel exerciseListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+
+    @FXML
+    private VBox tabsVBox;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -41,14 +47,32 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private MenuItem helpMenuItem;
 
-    @FXML
-    private StackPane exerciseListPanelPlaceholder;
+//    @FXML
+//    private StackPane exerciseListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
 
+//    @FXML
+//    private StackPane statusbarPlaceholder;
+
     @FXML
-    private StackPane statusbarPlaceholder;
+    private TabPane tabPanePlaceHolder;
+
+    @FXML
+    private StackPane homeContentPlaceholder;
+
+    @FXML
+    private StackPane exerciseContentPlaceholder;
+
+    @FXML
+    private StackPane workoutContentPlaceholder;
+
+    @FXML
+    private StackPane scheduleContentPlaceholder;
+
+    @FXML
+    private StackPane logContentPlaceholder;
 
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -107,14 +131,24 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        exerciseListPanel = new ExerciseListPanel(logic.getFilteredExerciseList());
-        exerciseListPanelPlaceholder.getChildren().add(exerciseListPanel.getRoot());
+//        exerciseListPanel = new ExerciseListPanel(logic.getFilteredExerciseList());
+//        exerciseListPanelPlaceholder.getChildren().add(exerciseListPanel.getRoot());
+
+        tabPanePlaceHolder.setMinWidth(530);
+        tabPanePlaceHolder.setMinHeight(200);
+
+        tabPanePlaceHolder.widthProperty().addListener((observable, oldValue, newValue) -> {
+            tabPanePlaceHolder.setTabMinWidth(newValue.doubleValue() / 5 - 24);
+            tabPanePlaceHolder.setTabMinWidth(newValue.doubleValue() / 5 - 24);
+        });
+
+        VBox.setVgrow(tabPanePlaceHolder, Priority.ALWAYS);
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getExerciseListFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+//        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getExerciseListFilePath());
+        // statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
@@ -160,9 +194,9 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public ExerciseListPanel getExerciseListPanel() {
-        return exerciseListPanel;
-    }
+//    public ExerciseListPanel getExerciseListPanel() {
+//        return exerciseListPanel;
+//    }
 
     /**
      * Executes the command and returns the result.
