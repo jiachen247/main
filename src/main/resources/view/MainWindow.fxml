@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -37,9 +36,6 @@
           </Menu>
         </MenuBar>
 
-        <!-- TABS GO HERE -->
-
-<!--        todo insert style-->
       <HBox VBox.vgrow="ALWAYS" >
       <VBox id="tabsVBox" HBox.hgrow="ALWAYS">
         <TabPane fx:id="tabPanePlaceHolder"
@@ -62,7 +58,6 @@
           <Tab text="Log">
             <StackPane fx:id="logContentPlaceholder" VBox.vgrow="ALWAYS"/>
           </Tab>
-
         </TabPane>
     </VBox>
       </HBox>
@@ -79,10 +74,8 @@
             <Insets top="5" right="10" bottom="5" left="10" />
           </padding>
         </StackPane>
-
       </VBox>
 
-<!--        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />-->
 
     </Scene>
   </scene>

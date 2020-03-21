@@ -19,8 +19,12 @@ import seedu.zerotoone.logic.Logic;
 import seedu.zerotoone.logic.commands.CommandResult;
 import seedu.zerotoone.logic.commands.exceptions.CommandException;
 import seedu.zerotoone.logic.parser.exceptions.ParseException;
-import seedu.zerotoone.ui.exercise.ExerciseListPanel;
 import seedu.zerotoone.ui.util.UiPart;
+import seedu.zerotoone.ui.views.exercise.ExerciseListPanel;
+import seedu.zerotoone.ui.views.home.HomePanel;
+import seedu.zerotoone.ui.views.log.LogListPanel;
+import seedu.zerotoone.ui.views.schedule.ScheduleListPanel;
+import seedu.zerotoone.ui.views.workout.WorkoutListPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -36,7 +40,12 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-//    private ExerciseListPanel exerciseListPanel;
+    private HomePanel homePanel;
+    private ExerciseListPanel exerciseListPanel;
+    private WorkoutListPanel workoutListPanel;
+    private ScheduleListPanel scheduleListPanel;
+    private LogListPanel logListPanel;
+
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -49,14 +58,8 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private MenuItem helpMenuItem;
 
-//    @FXML
-//    private StackPane exerciseListPanelPlaceholder;
-
     @FXML
     private StackPane resultDisplayPlaceholder;
-
-//    @FXML
-//    private StackPane statusbarPlaceholder;
 
     @FXML
     private TabPane tabPanePlaceHolder;
@@ -89,6 +92,11 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+
+        tabPanePlaceHolder.widthProperty().addListener((observable, oldValue, newValue) -> {
+            tabPanePlaceHolder.setTabMinWidth(newValue.doubleValue() / 5 - 24);
+            tabPanePlaceHolder.setTabMinWidth(newValue.doubleValue() / 5 - 24);
+        });
     }
 
     public Stage getPrimaryStage() {
@@ -133,24 +141,29 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-//        exerciseListPanel = new ExerciseListPanel(logic.getFilteredExerciseList());
-//        exerciseListPanelPlaceholder.getChildren().add(exerciseListPanel.getRoot());
+        homePanel = new HomePanel();
+        homeContentPlaceholder.getChildren().add(homePanel.getRoot());
+
+        exerciseListPanel = new ExerciseListPanel(logic.getFilteredExerciseList());
+        exerciseContentPlaceholder.getChildren().add(exerciseListPanel.getRoot());
+
+        workoutListPanel = new WorkoutListPanel();
+        workoutContentPlaceholder.getChildren().add(workoutListPanel.getRoot());
+
+        scheduleListPanel = new ScheduleListPanel();
+        scheduleContentPlaceholder.getChildren().add(scheduleListPanel.getRoot());
+
+        logListPanel = new LogListPanel();
+        logContentPlaceholder.getChildren().add(logListPanel.getRoot());
 
         tabPanePlaceHolder.setMinWidth(530);
         tabPanePlaceHolder.setMinHeight(200);
 
-        tabPanePlaceHolder.widthProperty().addListener((observable, oldValue, newValue) -> {
-            tabPanePlaceHolder.setTabMinWidth(newValue.doubleValue() / 5 - 24);
-            tabPanePlaceHolder.setTabMinWidth(newValue.doubleValue() / 5 - 24);
-        });
 
         VBox.setVgrow(tabPanePlaceHolder, Priority.ALWAYS);
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
-
-//        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getExerciseListFilePath());
-        // statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
@@ -195,10 +208,6 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow.hide();
         primaryStage.hide();
     }
-
-//    public ExerciseListPanel getExerciseListPanel() {
-//        return exerciseListPanel;
-//    }
 
     /**
      * Executes the command and returns the result.
