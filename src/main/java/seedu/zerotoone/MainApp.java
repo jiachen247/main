@@ -1,5 +1,10 @@
 package seedu.zerotoone;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.logging.Logger;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import seedu.zerotoone.commons.core.Config;
@@ -20,6 +25,7 @@ import seedu.zerotoone.model.session.SessionList;
 import seedu.zerotoone.model.userprefs.ReadOnlyUserPrefs;
 import seedu.zerotoone.model.userprefs.UserPrefs;
 import seedu.zerotoone.model.util.SampleExerciseDataUtil;
+import seedu.zerotoone.model.util.SampleScheduleDataUtil;
 import seedu.zerotoone.model.util.SampleSessionDataUtil;
 import seedu.zerotoone.model.util.SampleWorkoutDataUtil;
 import seedu.zerotoone.model.workout.ReadOnlyWorkoutList;
@@ -38,11 +44,6 @@ import seedu.zerotoone.storage.workout.WorkoutListStorage;
 import seedu.zerotoone.storage.workout.WorkoutListStorageManager;
 import seedu.zerotoone.ui.Ui;
 import seedu.zerotoone.ui.UiManager;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.logging.Logger;
 
 /**
  * Runs the application.
@@ -148,9 +149,7 @@ public class MainApp extends Application {
             if (!scheduleListOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with an empty ScheduleList");
             }
-            // STEPH_TODO: implement later
-            // initialScheduleListData = scheduleListOptional.orElseGet(SampleScheduleDataUtil::getSampleScheduleList);
-            initialScheduleListData = scheduleListOptional.orElseGet(ScheduleList::new);
+            initialScheduleListData = scheduleListOptional.orElseGet(SampleScheduleDataUtil::getSampleScheduleList);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty ScheduleList");
             initialScheduleListData = new ScheduleList();
