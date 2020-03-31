@@ -1,12 +1,5 @@
 package seedu.zerotoone.storage.session.util;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import seedu.zerotoone.commons.exceptions.IllegalValueException;
-import seedu.zerotoone.model.exercise.ExerciseName;
-import seedu.zerotoone.model.session.Session;
-import seedu.zerotoone.model.session.SessionSet;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -14,7 +7,13 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-// import java.util.stream.Collectors;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import seedu.zerotoone.commons.exceptions.IllegalValueException;
+import seedu.zerotoone.model.exercise.ExerciseName;
+import seedu.zerotoone.model.session.Session;
+import seedu.zerotoone.model.session.SessionSet;
 
 /**
  * Jackson-friendly version of {@link Session}.
@@ -87,7 +86,8 @@ public class JacksonSession {
         if (endTime == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "EndTime"));
         }
-        LocalDateTime start, end;
+        LocalDateTime start;
+        LocalDateTime end;
 
         try {
             start = LocalDateTime.parse(startTime, dateTimeFormatter);

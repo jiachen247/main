@@ -1,5 +1,9 @@
 package seedu.zerotoone.model.util;
 
+import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
+
 import seedu.zerotoone.model.exercise.ExerciseName;
 import seedu.zerotoone.model.exercise.NumReps;
 import seedu.zerotoone.model.exercise.Weight;
@@ -7,10 +11,6 @@ import seedu.zerotoone.model.session.ReadOnlySessionList;
 import seedu.zerotoone.model.session.Session;
 import seedu.zerotoone.model.session.SessionList;
 import seedu.zerotoone.model.session.SessionSet;
-
-import java.time.LocalDateTime;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Contains utility methods for populating {@code CompletedSessionList} with sample data.
@@ -27,7 +27,7 @@ public class SampleSessionDataUtil {
             sessionSets.add(new SessionSet(new Weight("99"), new NumReps("8"), true));
             sessionSets.add(new SessionSet(new Weight("99"), new NumReps("8"), true));
 
-            ExerciseName name = new ExerciseName(names[i%3]);
+            ExerciseName name = new ExerciseName(names[i % 3]);
             LocalDateTime start = LocalDateTime.now().minusDays(i);
             LocalDateTime end = start.plusHours(2);
             sessions[i] = new Session(name, sessionSets, start, end);

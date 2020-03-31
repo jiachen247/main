@@ -1,5 +1,10 @@
 package seedu.zerotoone.storage;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.logging.Logger;
+
 import seedu.zerotoone.commons.core.LogsCenter;
 import seedu.zerotoone.commons.exceptions.DataConversionException;
 import seedu.zerotoone.model.exercise.ReadOnlyExerciseList;
@@ -13,11 +18,6 @@ import seedu.zerotoone.storage.schedule.ScheduleListStorage;
 import seedu.zerotoone.storage.session.SessionListStorage;
 import seedu.zerotoone.storage.userprefs.UserPrefsStorage;
 import seedu.zerotoone.storage.workout.WorkoutListStorage;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.logging.Logger;
 
 /**
  * Manages storage of ExerciseList data in local storage.
@@ -139,6 +139,14 @@ public class StorageManager implements Storage {
     }
 
     @Override
+    public void saveScheduleList(ScheduleList scheduleList, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        scheduleListStorage.saveScheduleList(scheduleList, filePath);
+    }
+
+    // Session List
+
+    @Override
     public Path getSessionListFilePath() {
         return sessionListStorage.getSessionListFilePath();
     }
@@ -159,16 +167,8 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public void saveScheduleList(ScheduleList scheduleList, Path filePath) throws IOException {
-        logger.fine("Attempting to write to data file: " + filePath);
-        scheduleListStorage.saveScheduleList(scheduleList, filePath);
-    }
-
-    @Override
     public void saveSessionList(ReadOnlySessionList sessionList, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         sessionListStorage.saveSessionList(sessionList, filePath);
     }
-
-
 }

@@ -1,12 +1,12 @@
 package seedu.zerotoone.model.session;
 
-import seedu.zerotoone.model.exercise.ExerciseSet;
-import seedu.zerotoone.model.exercise.NumReps;
-import seedu.zerotoone.model.exercise.Weight;
+import static seedu.zerotoone.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
-import static seedu.zerotoone.commons.util.CollectionUtil.requireAllNonNull;
+import seedu.zerotoone.model.exercise.ExerciseSet;
+import seedu.zerotoone.model.exercise.NumReps;
+import seedu.zerotoone.model.exercise.Weight;
 
 /**
  * Represents a Session Set in the exercise list.

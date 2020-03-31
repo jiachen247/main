@@ -1,13 +1,14 @@
 package seedu.zerotoone.storage.session.util;
 
+import java.util.regex.Pattern;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.zerotoone.commons.exceptions.IllegalValueException;
 import seedu.zerotoone.model.exercise.NumReps;
 import seedu.zerotoone.model.exercise.Weight;
 import seedu.zerotoone.model.session.SessionSet;
-
-import java.util.regex.Pattern;
 
 /**
  * Jackson-friendly version of {@link SessionSet}.

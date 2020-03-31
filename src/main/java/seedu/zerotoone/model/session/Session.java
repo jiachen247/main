@@ -1,13 +1,12 @@
 package seedu.zerotoone.model.session;
 
-import seedu.zerotoone.model.exercise.ExerciseName;
+import static seedu.zerotoone.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
-import static seedu.zerotoone.commons.util.CollectionUtil.requireAllNonNull;
-
+import seedu.zerotoone.model.exercise.ExerciseName;
 
 /**
  * Represents an immutable Session once a session is completed.

@@ -1,12 +1,11 @@
 package seedu.zerotoone.model.session;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
-import static java.util.Objects.requireNonNull;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * Wraps all data at the session list level.
@@ -25,7 +24,7 @@ public class SessionList implements ReadOnlySessionList {
      */
     {
         internalList = FXCollections.observableArrayList();
-        internalUnmodifiableList =  FXCollections.unmodifiableObservableList(internalList);
+        internalUnmodifiableList = FXCollections.unmodifiableObservableList(internalList);
     }
 
     public SessionList() {}

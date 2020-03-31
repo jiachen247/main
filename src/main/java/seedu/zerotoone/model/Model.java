@@ -1,5 +1,10 @@
 package seedu.zerotoone.model;
 
+import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.util.Optional;
+import java.util.function.Predicate;
+
 import javafx.collections.ObservableList;
 import seedu.zerotoone.commons.core.GuiSettings;
 import seedu.zerotoone.model.exercise.Exercise;
@@ -12,11 +17,6 @@ import seedu.zerotoone.model.session.ReadOnlySessionList;
 import seedu.zerotoone.model.session.Session;
 import seedu.zerotoone.model.userprefs.ReadOnlyUserPrefs;
 import seedu.zerotoone.model.workout.WorkoutModel;
-
-import java.nio.file.Path;
-import java.time.LocalDateTime;
-import java.util.Optional;
-import java.util.function.Predicate;
 
 /**
  * The API of the Model component.

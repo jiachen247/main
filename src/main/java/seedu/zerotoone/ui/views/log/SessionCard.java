@@ -1,5 +1,7 @@
 package seedu.zerotoone.ui.views.log;
 
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -8,8 +10,6 @@ import javafx.scene.layout.VBox;
 import seedu.zerotoone.model.session.Session;
 import seedu.zerotoone.model.session.SessionSet;
 import seedu.zerotoone.ui.util.UiPart;
-
-import java.util.List;
 
 /**
  * An UI component that displays information of a {@code Session}.
@@ -47,7 +47,8 @@ public class SessionCard extends UiPart<Region> {
         for (int i = 0; i < exerciseSetsList.size(); i++) {
             SessionSet sessionSet = exerciseSetsList.get(i);
             SessionSetCard sessionSetCard =
-                new SessionSetCard(i, sessionSet.getNumReps().value, sessionSet.getWeight().value, sessionSet.isFinished());
+                new SessionSetCard(i, sessionSet.getNumReps().value, sessionSet.getWeight().value,
+                    sessionSet.isFinished());
             this.sessionSets.getChildren().add(sessionSetCard.getRoot());
         }
     }

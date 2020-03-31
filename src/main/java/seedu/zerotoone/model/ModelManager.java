@@ -1,8 +1,18 @@
 package seedu.zerotoone.model;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.zerotoone.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.logging.Logger;
+
+import org.apache.commons.lang3.time.StopWatch;
+
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import org.apache.commons.lang3.time.StopWatch;
 import seedu.zerotoone.commons.core.GuiSettings;
 import seedu.zerotoone.commons.core.LogsCenter;
 import seedu.zerotoone.model.exercise.Exercise;
@@ -21,15 +31,6 @@ import seedu.zerotoone.model.userprefs.UserPrefs;
 import seedu.zerotoone.model.workout.ReadOnlyWorkoutList;
 import seedu.zerotoone.model.workout.Workout;
 import seedu.zerotoone.model.workout.WorkoutList;
-
-import java.nio.file.Path;
-import java.time.LocalDateTime;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.logging.Logger;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.zerotoone.commons.util.CollectionUtil.requireAllNonNull;
 
 
 /**

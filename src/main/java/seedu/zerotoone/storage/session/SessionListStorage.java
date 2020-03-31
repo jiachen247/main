@@ -1,12 +1,12 @@
 package seedu.zerotoone.storage.session;
 
-import seedu.zerotoone.commons.exceptions.DataConversionException;
-import seedu.zerotoone.model.session.ReadOnlySessionList;
-import seedu.zerotoone.model.session.SessionList;
-
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
+
+import seedu.zerotoone.commons.exceptions.DataConversionException;
+import seedu.zerotoone.model.session.ReadOnlySessionList;
+import seedu.zerotoone.model.session.SessionList;
 
 /**
  * Represents a storage for {@link SessionList}.

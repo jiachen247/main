@@ -1,5 +1,12 @@
 package seedu.zerotoone.storage.session;
 
+import static java.util.Objects.requireNonNull;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.logging.Logger;
+
 import seedu.zerotoone.commons.core.LogsCenter;
 import seedu.zerotoone.commons.exceptions.DataConversionException;
 import seedu.zerotoone.commons.exceptions.IllegalValueException;
@@ -7,13 +14,6 @@ import seedu.zerotoone.commons.util.FileUtil;
 import seedu.zerotoone.commons.util.JsonUtil;
 import seedu.zerotoone.model.session.ReadOnlySessionList;
 import seedu.zerotoone.storage.session.util.JacksonSessionList;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.logging.Logger;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * A class to access SessionList data stored as a json file on the hard disk.

@@ -1,5 +1,7 @@
 package seedu.zerotoone.logic;
 
+import java.nio.file.Path;
+
 import javafx.collections.ObservableList;
 import seedu.zerotoone.commons.core.GuiSettings;
 import seedu.zerotoone.logic.commands.CommandResult;
@@ -9,8 +11,6 @@ import seedu.zerotoone.model.exercise.Exercise;
 import seedu.zerotoone.model.exercise.ReadOnlyExerciseList;
 import seedu.zerotoone.model.schedule.ScheduledWorkout;
 import seedu.zerotoone.model.session.Session;
-
-import java.nio.file.Path;
 
 /**
  * API of the Logic component

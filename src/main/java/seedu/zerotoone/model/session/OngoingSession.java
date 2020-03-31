@@ -1,16 +1,15 @@
 package seedu.zerotoone.model.session;
 
-import seedu.zerotoone.model.exercise.Exercise;
-import seedu.zerotoone.model.exercise.ExerciseName;
-import seedu.zerotoone.model.exercise.ExerciseSet;
+import static seedu.zerotoone.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.Optional;
 import java.util.Queue;
 
-import static seedu.zerotoone.commons.util.CollectionUtil.requireAllNonNull;
-
+import seedu.zerotoone.model.exercise.Exercise;
+import seedu.zerotoone.model.exercise.ExerciseName;
+import seedu.zerotoone.model.exercise.ExerciseSet;
 
 /**
  * Represents a single Session.

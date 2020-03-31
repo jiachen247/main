@@ -1,15 +1,15 @@
 package seedu.zerotoone.logic.commands;
 
-import seedu.zerotoone.logic.commands.exceptions.CommandException;
-import seedu.zerotoone.model.Model;
-import seedu.zerotoone.model.session.OngoingSession;
-import seedu.zerotoone.model.session.SessionSet;
+import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
-import static java.util.Objects.requireNonNull;
+import seedu.zerotoone.logic.commands.exceptions.CommandException;
+import seedu.zerotoone.model.Model;
+import seedu.zerotoone.model.session.OngoingSession;
+import seedu.zerotoone.model.session.SessionSet;
 
 /**
  * Completes the next up exerciseQueue in the session.
