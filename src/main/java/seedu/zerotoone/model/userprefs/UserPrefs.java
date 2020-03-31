@@ -1,12 +1,12 @@
 package seedu.zerotoone.model.userprefs;
 
-import static java.util.Objects.requireNonNull;
+import seedu.zerotoone.commons.core.GuiSettings;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
-import seedu.zerotoone.commons.core.GuiSettings;
+import static java.util.Objects.requireNonNull;
 
 /**
  * Represents User's preferences.
@@ -17,7 +17,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     private Path exerciseListFilePath = Paths.get("data" , "exerciselist.json");
     private Path workoutListFilePath = Paths.get("data" , "workoutlist.json");
     private Path scheduleListFilePath = Paths.get("data" , "schedulelist.json");
-    private Path logListFilePath = Paths.get("data" , "loglist.json");
+    private Path logListFilePath = Paths.get("data" , "session.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.

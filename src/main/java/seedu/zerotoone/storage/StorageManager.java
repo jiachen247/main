@@ -1,21 +1,23 @@
 package seedu.zerotoone.storage;
 
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.logging.Logger;
-
 import seedu.zerotoone.commons.core.LogsCenter;
 import seedu.zerotoone.commons.exceptions.DataConversionException;
 import seedu.zerotoone.model.exercise.ReadOnlyExerciseList;
 import seedu.zerotoone.model.schedule.ScheduleList;
+import seedu.zerotoone.model.session.ReadOnlySessionList;
 import seedu.zerotoone.model.userprefs.ReadOnlyUserPrefs;
 import seedu.zerotoone.model.userprefs.UserPrefs;
 import seedu.zerotoone.model.workout.ReadOnlyWorkoutList;
 import seedu.zerotoone.storage.exercise.ExerciseListStorage;
 import seedu.zerotoone.storage.schedule.ScheduleListStorage;
+import seedu.zerotoone.storage.session.SessionListStorage;
 import seedu.zerotoone.storage.userprefs.UserPrefsStorage;
 import seedu.zerotoone.storage.workout.WorkoutListStorage;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.logging.Logger;
 
 /**
  * Manages storage of ExerciseList data in local storage.
@@ -26,14 +28,17 @@ public class StorageManager implements Storage {
     private ExerciseListStorage exerciseListStorage;
     private WorkoutListStorage workoutListStorage;
     private ScheduleListStorage scheduleListStorage;
+    private SessionListStorage sessionListStorage;
 
     public StorageManager(UserPrefsStorage userPrefsStorage, ExerciseListStorage exerciseListStorage,
-            WorkoutListStorage workoutListStorage, ScheduleListStorage scheduleListStorage) {
+            WorkoutListStorage workoutListStorage, ScheduleListStorage scheduleListStorage,
+            SessionListStorage sessionListStorage) {
         super();
         this.userPrefsStorage = userPrefsStorage;
         this.exerciseListStorage = exerciseListStorage;
         this.workoutListStorage = workoutListStorage;
         this.scheduleListStorage = scheduleListStorage;
+        this.sessionListStorage = sessionListStorage;
     }
 
     // -----------------------------------------------------------------------------------------
@@ -134,8 +139,36 @@ public class StorageManager implements Storage {
     }
 
     @Override
+    public Path getSessionListFilePath() {
+        return sessionListStorage.getSessionListFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlySessionList> readSessionList() throws DataConversionException, IOException {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<ReadOnlySessionList> readSessionList(Path filePath) throws DataConversionException, IOException {
+        return Optional.empty();
+    }
+
+    @Override
+    public void saveSessionList(ReadOnlySessionList sessionList) throws IOException {
+        saveSessionList(sessionList, sessionListStorage.getSessionListFilePath());
+    }
+
+    @Override
     public void saveScheduleList(ScheduleList scheduleList, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         scheduleListStorage.saveScheduleList(scheduleList, filePath);
     }
+
+    @Override
+    public void saveSessionList(ReadOnlySessionList sessionList, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        sessionListStorage.saveSessionList(sessionList, filePath);
+    }
+
+
 }

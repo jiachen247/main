@@ -1,15 +1,15 @@
 package seedu.zerotoone.logic.commands;
 
-import static java.util.Objects.requireNonNull;
+import seedu.zerotoone.logic.commands.exceptions.CommandException;
+import seedu.zerotoone.model.Model;
+import seedu.zerotoone.model.session.OngoingSession;
+import seedu.zerotoone.model.session.SessionSet;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
-import seedu.zerotoone.logic.commands.exceptions.CommandException;
-import seedu.zerotoone.model.Model;
-import seedu.zerotoone.model.session.Session;
-import seedu.zerotoone.model.session.SessionSet;
+import static java.util.Objects.requireNonNull;
 
 /**
  * Completes the next up exerciseQueue in the session.
@@ -33,7 +33,7 @@ public class SkipCommand extends Command {
         }
 
         LocalDateTime currentDateTime = LocalDateTime.now();
-        Session current = model.getCurrentSession().get();
+        OngoingSession current = model.getCurrentSession().get();
 
         SessionSet set = current.skip();
 
