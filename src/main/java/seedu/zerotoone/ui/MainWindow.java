@@ -1,7 +1,5 @@
 package seedu.zerotoone.ui;
 
-import java.util.logging.Logger;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -25,6 +23,8 @@ import seedu.zerotoone.ui.views.home.HomePanel;
 import seedu.zerotoone.ui.views.log.LogListPanel;
 import seedu.zerotoone.ui.views.schedule.ScheduledWorkoutListPanel;
 import seedu.zerotoone.ui.views.workout.WorkoutListPanel;
+
+import java.util.logging.Logger;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -153,7 +153,8 @@ public class MainWindow extends UiPart<Stage> {
         scheduledWorkoutListPanel = new ScheduledWorkoutListPanel(logic.getSortedScheduledWorkoutList());
         scheduleContentPlaceholder.getChildren().add(scheduledWorkoutListPanel.getRoot());
 
-        logListPanel = new LogListPanel();
+
+        logListPanel = new LogListPanel(logic.getSessionList());
         logContentPlaceholder.getChildren().add(logListPanel.getRoot());
 
         tabPanePlaceHolder.setMinWidth(530);

@@ -89,7 +89,7 @@ public class ModelManager implements Model {
         this.currentSession = Optional.empty();
         this.stopwatch = new StopWatch();
 
-        this.sessionList = new SessionList();
+        this.sessionList = new SessionList(sessionList);
         filteredSessions = new FilteredList<>(this.sessionList.getSessionList());
     }
 
@@ -167,6 +167,20 @@ public class ModelManager implements Model {
         exerciseList.setExercise(target, editedExercise);
     }
 
+    // -----------------------------------------------------------------------------------------
+    // Session List
+
+    @Override
+    public Path getSessionListFilePath() {
+        return userPrefs.getLogListFilePath();
+    }
+
+    @Override
+    public void setSessionListFilePath(Path sessionListFilePath) {
+        requireNonNull(sessionListFilePath);
+        userPrefs.setLogListFilePath(sessionListFilePath);
+    }
+
     @Override
     public ObservableList<Exercise> getFilteredExerciseList() {
         return filteredExercises;
@@ -208,6 +222,16 @@ public class ModelManager implements Model {
     @Override
     public ScheduleList getScheduleList() {
         return scheduler.getScheduleList();
+    }
+
+    @Override
+    public ReadOnlySessionList getSessionList() {
+        return sessionList;
+    }
+
+    @Override
+    public ObservableList<Session> getFilteredSessionList() {
+        return filteredSessions;
     }
 
     @Override
