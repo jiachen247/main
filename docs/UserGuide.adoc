@@ -337,23 +337,29 @@ Examples:
 * `schedule recurring delete Push`
 * `schedule recurring delete Pull`
 
-==== List your schedule
-Displays a list of the user’s schedule, sorted in chronological order.
+==== List your logs
+Displays a list of the user’s session logs, sorted in chronological order.
 
-Format: `schedule list`
+Format: `log list`
 
-=== Logging Workouts
+//=== Logging Workouts
 
-==== Show log of workouts
-Displays an indexed log of the user’s past workouts, sorted in chronological order.
-
-Format: `session`
+//==== Show log of workouts
+//Displays an indexed log of the user’s past workouts, sorted in chronological order.
+//
+//Format: `session`
 
 ==== Delete log of past workout
 Deletes the log information at the specified log_index.
-The index refers to the index number displayed on the log list.
+The index refers to the index number displayed on the `log list`.
 
-Format: `log delete <log_index>`
+Format: `log find {st/<datetime> | et/<datetime> | e/<exercise_name>}`
+
+Examples:
+* `log find e\BENCH PRESS`
+* `log find st/2020-04-27 10:10`
+* `log find et/2020-04-27 10:10`
+
 
 [TIP]
 The index must be a positive integer i.e. 1, 2, 3…
@@ -373,8 +379,8 @@ Examples:
 The search is case-sensitive for the params.
 Only full words will be matched.
 
-==== Show a graphical progress chart
+==== [WIP] Show a graphical progress chart
 Displays a line graph of the past workouts progress.
 
-Format: `chart`
+Format: `log display`
 
