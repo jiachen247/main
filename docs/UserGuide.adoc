@@ -353,31 +353,27 @@ Format: `log list`
 Deletes the log information at the specified log_index.
 The index refers to the index number displayed on the `log list`.
 
-Format: `log find {st/<datetime> | et/<datetime> | e/<exercise_name>}`
+Format: `log delete LOG_ID`
 
 Examples:
-* `log find e\BENCH PRESS`
-* `log find st/2020-04-27 10:10`
-* `log find et/2020-04-27 10:10`
-
+* `log delete 2`
 
 [TIP]
 The index must be a positive integer i.e. 1, 2, 3…
 
-
 ==== Find a past workout
 Finds a past workout by date or keyword. Query types: DATE, EXERCISE, WORKOUT, SCHEDULE.
 
-Format: `log find <query_type> <params>`
+Format: `log find {st/<datetime> | et/<datetime> | e/<exercise_name>}`
 
 Examples:
-
-* `log find DATE 2020-02-18T1600`
-* `log find EXERCISE BENCH_PRESS_60KG`
+* `log find e\BENCH PRESS`
+* `log find st\2020-04-27 10:10`
+* `log find et\2020-04-27 10:10`
 
 [TIP]
 The search is case-sensitive for the params.
-Only full words will be matched.
+Partial words will be matched.
 
 ==== [WIP] Show a graphical progress chart
 Displays a line graph of the past workouts progress.
